@@ -1,0 +1,3 @@
+create user 'dvwa'@'localhost' IDENTIFIED BY 'p@ssw0rd';
+create database if not exists dvwa;
+grant all privileges on dvwa.* TO 'dvwa'@'localhost';
