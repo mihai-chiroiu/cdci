@@ -9,10 +9,15 @@
 
 
 # https://containernet.github.io/#installation
+#cd ..
+#sudo apt-get install -f -y ansible git aptitude
+#git clone https://github.com/containernet/containernet.git
+#cd containernet/ansible
+#sudo ansible-playbook -i "localhost," -c local install.yml
+#cd ..
+#sudo make develop
 
-sudo apt-get install -f -y ansible git aptitude
-git clone https://github.com/containernet/containernet.git
-cd containernet/ansible
-sudo ansible-playbook -i "localhost," -c local install.yml
-cd ..
-sudo make develop
+# make containers for labs
+#cd cdci
+cd containers
+make
