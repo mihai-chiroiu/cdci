@@ -1,4 +1,4 @@
-NAME = rpi-mn/base
+NAME = base
 
 .PHONY: build
 build:
