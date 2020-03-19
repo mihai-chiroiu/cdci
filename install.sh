@@ -28,4 +28,5 @@ sudo make develop
 cd cdci/containers
 make
 
-
+cd ..
+git clone https://github.com/mihai-chiroiu/cdci.git
