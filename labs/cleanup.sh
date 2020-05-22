@@ -2,7 +2,7 @@
 # (c) Mihai Chiroiu - CDCI (https://ocw.cs.pub.ro/courses/cdci) 
 
 # remove all the virtual interfaces
-for i in $(ip a s | grep -w 's*-eth.*' | cut -d ":" -f 2 | cut -d "@" -f 1)
+for i in $(ip a s | grep -w 's*-eth*' | cut -d ":" -f 2 | cut -d "@" -f 1)
 do 
 	ip link delete $i; 
 done
