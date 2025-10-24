@@ -1,4 +1,4 @@
-NAME = base
+NAME = cdci_base
 
 .PHONY: build
 build:

@@ -1,7 +1,7 @@
-FROM kalilinux/kali 
+FROM cdci_base
 
 RUN apt-get update && apt-get install -y \
-        iputils-ping net-tools iproute2 bash nmap dnsmasq 
+        nmap dnsmasq 
 
 COPY dnsmasq.conf /etc/dnsmasq.conf 
 COPY start_app.sh .

@@ -1,21 +1,22 @@
-FROM ubuntu:18.04
+FROM cdci_base
 
-RUN apt-get update && apt-get install -y \
-        iputils-ping net-tools iproute2 bash openssl wget unzip bsdmainutils ssh vim curl \
-        python-setuptools \
-        python-pip \
-        python-dev \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends  \
+        wget unzip bsdmainutils ssh vim curl \
+        python3-pip \
+	python-dev-is-python3 \
         wget \
         build-essential \
         bison automake \
         flex \
         libpcap-dev \
+	libtirpc-dev libnsl-dev \
         libpcre3-dev \
         libdumbnet-dev \
         zlib1g-dev \
-        iptables-dev \
+	libxtables-dev \
         libnetfilter-queue1 \
-        tcpdump \
         unzip \
         vim \ 
 	libluajit-5.1-dev pkg-config openssl libssl-dev
@@ -23,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 # Define working directory.
 WORKDIR /opt
 
-ENV DAQ_VERSION 2.0.7
+ENV DAQ_VERSION=2.0.7
 RUN wget https://www.snort.org/downloads/snort/daq-${DAQ_VERSION}.tar.gz \
     && tar xvfz daq-${DAQ_VERSION}.tar.gz \
     && cd daq-${DAQ_VERSION} \
@@ -31,11 +32,14 @@ RUN wget https://www.snort.org/downloads/snort/daq-${DAQ_VERSION}.tar.gz \
 
 RUN ldconfig
 
-ENV SNORT_VERSION 2.9.19
-RUN wget https://www.snort.org/downloads/snort/snort-${SNORT_VERSION}.tar.gz \
+ENV SNORT_VERSION=2.9.19
+RUN wget https://www.snort.org/downloads/archive/snort/snort-${SNORT_VERSION}.tar.gz \
     && tar xvfz snort-${SNORT_VERSION}.tar.gz \
     && cd snort-${SNORT_VERSION} \
-    && ./configure; make; make install
+    && CPPFLAGS="-I/usr/include/tirpc" LDFLAGS="-ltirpc" \
+    ./configure --enable-sourcefire \
+    && make -j"$(nproc)" \
+    && make install
 
 RUN ldconfig
 
