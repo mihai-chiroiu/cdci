@@ -2,5 +2,5 @@ NAME = dvwa
 
 .PHONY: build
 build:
-	docker build -t "$(NAME)" .
+	docker build --network=host -t "$(NAME)" .
 

@@ -2,4 +2,4 @@ NAME = lab07/snort
 
 .PHONY: build
 build:
-	docker build -t "$(NAME)" .
+	docker build --network=host -t "$(NAME)" .
