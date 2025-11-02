@@ -23,14 +23,14 @@ def myNetwork():
     # attacker 2 docker containers
     mn_args = {
         "network_mode": "none",
-        "dimage": "kali",
+        "dimage": "cdci_base",
         "dcmd": None,
         "ip": "192.168.16.2/24",
     }
     H1 = net.addDocker('attacker', **mn_args)
     mn_args = {
         "network_mode": "none",
-        "dimage": "base",
+        "dimage": "cdci_base",
         "dcmd": "./start_app.sh",
         "ip": "192.168.16.100/24",
     }
