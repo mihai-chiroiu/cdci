@@ -31,7 +31,7 @@ def myNetwork():
     mn_args = {
         "network_mode": "none",
         "dimage": "cdci_base",
-        "dcmd": "./start_app.sh",
+        "dcmd": "/usr/local/bin/start_app.sh",
         "ip": "192.168.16.100/24",
     }
     H2 = net.addDocker('victim', **mn_args)
