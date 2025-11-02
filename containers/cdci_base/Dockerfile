@@ -17,7 +17,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 # copy all start scripts into base image
-COPY start-scripts/ /opt/start-scripts/
+COPY start_scripts/ /opt/start_scripts/
 
 COPY start_cdci_base.sh /usr/local/bin/start_app.sh
 CMD ["/usr/local/bin/start_app.sh"]
