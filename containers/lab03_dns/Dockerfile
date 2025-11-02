@@ -1,7 +1,5 @@
 FROM cdci_base
 
-RUN apt-get update && apt-get install -y bind9
-
 COPY named.conf /etc/bind/named.conf
 COPY db.10 /etc/bind/db.10
 

@@ -2,7 +2,6 @@
 .PHONY: containers
 containers:
 	make -C cdci_base
-	make -C kali
 	make -C lab03_dwva
 	make -C lab03_iot
 	make -C lab03_dhcpd
